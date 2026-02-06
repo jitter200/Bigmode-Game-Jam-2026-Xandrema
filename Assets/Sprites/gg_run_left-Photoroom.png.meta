@@ -1,25 +1,28 @@
 fileFormatVersion: 2
-guid: 91bf8b33962c0db45b7fc4b580cecb1d
+guid: 4c0ff449ee6e62547b8eef4158d2cd21
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5235129891378591048
-    second: gg_run_right_0
+      213: 5860777317123337837
+    second: gg_run_left-Photoroom_0
   - first:
-      213: 2714281934782179219
-    second: gg_run_right_1
+      213: 6163230454507089737
+    second: gg_run_left-Photoroom_1
   - first:
-      213: 5591397923256825845
-    second: gg_run_right_2
+      213: -1981693015536241892
+    second: gg_run_left-Photoroom_2
   - first:
-      213: -5659315479911753089
-    second: gg_run_right_3
+      213: -8847446424170665110
+    second: gg_run_left-Photoroom_3
   - first:
-      213: -8481040648918557691
-    second: gg_run_right_4
+      213: 8274917188472906951
+    second: gg_run_left-Photoroom_4
   - first:
-      213: 8276699274785635028
-    second: gg_run_right_5
+      213: 4899704629854992931
+    second: gg_run_left-Photoroom_5
+  - first:
+      213: -6805620382270568684
+    second: gg_run_left-Photoroom_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -66,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,111 +118,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gg_run_right_0
+      name: gg_run_left-Photoroom_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 126
-        height: 136
+        width: 214
+        height: 234
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8ba8957c9151957b0800000000000000
-      internalID: -5235129891378591048
+      spriteID: d6eadce0be9a55150800000000000000
+      internalID: 5860777317123337837
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gg_run_right_1
+      name: gg_run_left-Photoroom_1
       rect:
         serializedVersion: 2
-        x: 126
+        x: 214
         y: 0
-        width: 126
-        height: 136
+        width: 214
+        height: 234
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 397a3fee9011ba520800000000000000
-      internalID: 2714281934782179219
+      spriteID: 94fa3c5b171388550800000000000000
+      internalID: 6163230454507089737
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gg_run_right_2
+      name: gg_run_left-Photoroom_2
       rect:
         serializedVersion: 2
-        x: 252
+        x: 428
         y: 0
-        width: 126
-        height: 136
+        width: 214
+        height: 234
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5f7749569c2a89d40800000000000000
-      internalID: 5591397923256825845
+      spriteID: c13f61ba3bc9f74e0800000000000000
+      internalID: -1981693015536241892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gg_run_right_3
+      name: gg_run_left-Photoroom_3
       rect:
         serializedVersion: 2
-        x: 378
+        x: 642
         y: 0
-        width: 126
-        height: 136
+        width: 227
+        height: 234
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f7a9dfb2e821671b0800000000000000
-      internalID: -5659315479911753089
+      spriteID: a6be10e5a5e873580800000000000000
+      internalID: -8847446424170665110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gg_run_right_4
+      name: gg_run_left-Photoroom_4
       rect:
         serializedVersion: 2
-        x: 504
+        x: 871
         y: 0
-        width: 126
-        height: 136
+        width: 199
+        height: 234
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 50c9f8bd67a4d4a80800000000000000
-      internalID: -8481040648918557691
+      spriteID: 7c4a3bc275966d270800000000000000
+      internalID: 8274917188472906951
       vertices: []
       indices: 
       edges: []
@@ -228,7 +231,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4090f463dd507c54b842d653b8c7e97a
+    spriteID: 1c27d3bc8fd5b4146b3e5d3b8c490ef9
     internalID: 0
     vertices: []
     indices: 
@@ -238,13 +241,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":1.0},"gridSpriteSize":{"x":126.0,"y":136.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":1.0},"gridSpriteSize":{"x":214.0,"y":234.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      gg_run_right_0: -5235129891378591048
-      gg_run_right_1: 2714281934782179219
-      gg_run_right_2: 5591397923256825845
-      gg_run_right_3: -5659315479911753089
-      gg_run_right_4: -8481040648918557691
+      gg_run_left-Photoroom_0: 5860777317123337837
+      gg_run_left-Photoroom_1: 6163230454507089737
+      gg_run_left-Photoroom_2: -1981693015536241892
+      gg_run_left-Photoroom_3: -8847446424170665110
+      gg_run_left-Photoroom_4: 8274917188472906951
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
