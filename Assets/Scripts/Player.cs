@@ -1,4 +1,7 @@
 using UnityEngine;
+using System;
+
+
 using UnityEngine.InputSystem;
 
 
@@ -11,19 +14,33 @@ public class Player : MonoBehaviour
     public bool faceVelocity = true;
     public float speedTurnRateDeg = 260f;
     public float windMax = 100f;
-    public float windDrainPerSec = 6f;
-    public float howMuchGetPerKill = 14f;
-    public float howMuchSetPerDamage = 0.15f;
+    public float windDrainPerSec = 4f;
+    public float howMuchGetPerKill = 24f;
+    public float howMuchSetPerDamage = 0f;
     public bool dieAtZero = true;
     public float aoeRadius = 1.8f;
     public float aoeTick = 0.12f;
     public float aoeCenterDamage = 10f;
+    public float maxHp = 100f;
+    public event Action Died;
+    [SerializeField] private float hp;
+    [SerializeField] private SpriteRenderer sprite;
+    [SerializeField] private Color damageColor = Color.red;
+    [SerializeField] private float damageFlashTime = 0.1f;
+    [SerializeField] private float shakeAmount = 0.05f;
+    private Vector3 _baseLocalPos;
+    private Transform _spriteTf;
+    private Vector3 _spriteBaseLocalPos;
+
+
+    private Color _baseColor;
+    private float _flashTimer;
     [Range(0f, 1f)] public float aoeEdgeMultiplier = 0.2f;
     public LayerMask enemyMask;
 
    
     public bool drawGizmos = true;
-
+    public float Hp01 => Mathf.Clamp01(hp / maxHp);
     public float Wind01 => Mathf.Clamp01(_wind / windMax);
 
     private Rigidbody2D _rb;
@@ -42,31 +59,66 @@ public class Player : MonoBehaviour
         _enemyFilter.useLayerMask = true;
         _enemyFilter.layerMask = enemyMask;
         _enemyFilter.useTriggers = true; 
+        
 
         _wind = windMax;
-
+        hp = maxHp;
         
-        Vector2 direction = Random.insideUnitCircle;
+
+
+        Vector2 direction = UnityEngine.Random.insideUnitCircle;
+
         direction = (direction == Vector2.zero) ? Vector2.up : direction.normalized;
-        _rb.linearVelocity = direction * Mathf.Max(minSpeed, 1f);
+        _rb.linearVelocity = direction * Mathf.Max(minSpeed, 1f);     
+
+        if (sprite == null)
+            sprite = GetComponentInChildren<SpriteRenderer>();
+
+        _spriteTf = sprite.transform;
+        _spriteBaseLocalPos = _spriteTf.localPosition;
+
+        _baseColor = sprite.color;
+
+
     }
 
     private void Update()
     {
         _wind -= windDrainPerSec * Time.deltaTime;
 
-        if (dieAtZero && _wind <= 0f)
-        {
-            _wind = 0f;
-            Die();
-            return;
-        }
+        _wind = Mathf.Max(0f, _wind);
+
 
         _aoeTimer += Time.deltaTime;
         if (_aoeTimer >= aoeTick)
         {
             _aoeTimer -= aoeTick;
             DoAoeTick();
+        }
+
+        if (_flashTimer > 0f)
+        {
+            _flashTimer -= Time.deltaTime;
+            if (_flashTimer <= 0f)
+                sprite.color = _baseColor;
+        }
+
+        float danger = Mathf.Max(1f - Hp01, 1f - Wind01);
+        Color dangerTint = Color.Lerp(_baseColor, Color.yellow, danger * 0.6f);
+
+        if (_flashTimer <= 0f)
+            sprite.color = dangerTint;
+
+        bool critical = Hp01 < 0.3f || Wind01 < 0.2f;
+
+        if (critical)
+        {
+            Vector2 shake = UnityEngine.Random.insideUnitCircle * shakeAmount;
+            _spriteTf.localPosition = _spriteBaseLocalPos + (Vector3)shake;
+        }
+        else
+        {
+            _spriteTf.localPosition = _spriteBaseLocalPos;
         }
     }
 
@@ -130,6 +182,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnValidate()
+    {
+        _enemyFilter.useLayerMask = true;
+        _enemyFilter.layerMask = enemyMask;
+        _enemyFilter.useTriggers = true;
+    }
 
     private void DoAoeTick()
     {
@@ -170,7 +228,8 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Player died");
+        Debug.Log("You dead");
+        Died?.Invoke();
         enabled = false;
         _rb.linearVelocity = Vector2.zero;
     }
@@ -183,6 +242,27 @@ public class Player : MonoBehaviour
         float rad = newAng * Mathf.Deg2Rad;
         return new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
     }
+    public void TakeWindDamage(float amount)
+    {
+        if (amount <= 0f) return;
+        _wind = Mathf.Max(0f, _wind - amount);
+    }
+    public void TakeDamage(float amount)
+    {
+        if (amount <= 0f) return;
+        if (hp <= 0f) return;
+
+        hp -= amount;
+
+        if (hp <= 0f)
+        {
+            hp = 0f;
+            Die();
+        }
+        sprite.color = damageColor;
+        _flashTimer = damageFlashTime;
+
+    }
 
     private void OnDrawGizmosSelected()
     {
@@ -192,23 +272,3 @@ public class Player : MonoBehaviour
     }
 }
 
-public class EnemyHealth : MonoBehaviour
-{
-    public float maxHp = 30f;
-    public float hp;
-    public bool IsDead => hp <= 0f;
-
-    private void Awake() => hp = maxHp;
-
-    public float ApplyDamage(float amount)
-    {
-        if (IsDead || amount <= 0f) return 0f;
-
-        float before = hp;
-        hp = Mathf.Max(0f, hp - amount);
-        float dealt = before - hp;
-
-        if (IsDead) Destroy(gameObject);
-        return dealt;
-    }
-}
