@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2559021421078636496}
   - component: {fileID: -6340965346907160442}
   - component: {fileID: 1277091155324068152}
+  - component: {fileID: -3983016013921650205}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -166,10 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3309c2a24c2c0ea41891b119b57cee63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
+  moveSpeed: 4
   steering: 12
   windDamagePerSecond: 6
-  damagePerSecond: 15
+  damagePerSecond: 6
 --- !u!114 &1277091155324068152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,5 +183,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81fd5bbfc06e8c448b0c95cd1b1e592f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 100
-  hp: 100
+  maxHp: 60
+  hp: 60
+--- !u!95 &-3983016013921650205
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2287886773590937510}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e68f8e58adcf4a34f9f2ee1b3fadd4d8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
